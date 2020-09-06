@@ -19,6 +19,7 @@ class HX711MULTI
 
 		long *OFFSETS;	// used for tare weight
 		float SCALE;	// used to return weight in grams, kg, ounces, whatever
+		long int TIMEOUT = 300;
 
 	public:
 		// define clock and data pin, channel, and gain factor
@@ -46,7 +47,7 @@ class HX711MULTI
 		void read(long *result = NULL);
 
 		// same as read, but does not offset the values according to the tare
-		void HX711MULTI::readRaw(long *result = NULL);
+		void readRaw(long *result = NULL);
 
 		// set the OFFSET value for tare weight
 		// times: how many times to read the tare value
@@ -61,6 +62,9 @@ class HX711MULTI
 		void power_up();
 
 		void setDebugEnable(bool debugEnable = true);
+
+		void setTimeOut(int timeout);
+		void forceRead();
 };
 
 #endif /* HX711_MULTI_h */
